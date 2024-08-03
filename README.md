@@ -1,6 +1,6 @@
 # YouTube Video Summarizer
 
-This versatile tool is designed to enhance your productivity and understanding by leveraging advanced AI technologies to process and extract valuable information from YouTube videos. It can run using **OpenAI**, **Anthropic** and **Groq** APIs and uses advanced prompts provided by (Fabric)[https://github.com/danielmiessler/fabric]. Here’s what this app can do:
+This versatile tool is designed to enhance your productivity and understanding by leveraging advanced AI technologies to process and extract valuable information from YouTube videos. It can run using **OpenAI**, **Anthropic** and **Groq** APIs and uses advanced prompts provided by [Fabric](https://github.com/danielmiessler/fabric). Here’s what this app can do:
 
 **Summarize YouTube Videos**: Easily create concise summaries of lectures, news, and other video content. Perfect for quick reviews and note-taking.
 **Extract Wisdom**: Generate meaningful insights and key takeaways from podcasts and discussions. Ideal for capturing the essence of lengthy content.
@@ -8,7 +8,7 @@ This versatile tool is designed to enhance your productivity and understanding b
 **Custom Prompts**: Input your custom prompts to tailor the AI’s response to your specific needs, whether it’s for Q&A generation, detailed analysis, or any other purpose.
 
 
-## Steps to run this localy (via command line)
+## Steps to run this locally (via command line)
 1. Clone this repository
 ```
 git clone https://github.com/gdevakumar/YouTube-Summarizer.git
