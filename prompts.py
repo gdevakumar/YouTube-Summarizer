@@ -18,6 +18,7 @@ Output numbered lists, not bullets.
 Do not output warnings or notes—just the requested sections.
 Do not repeat items in the output sections.
 Do not start items with the same opening words.
+Do not give headings and content in same line.
 """
 
 
@@ -56,6 +57,8 @@ Output the cards you create as a CSV table. Put the question in the first column
 Do not output warnings or notes—just the requested sections.
 
 Do not output backticks: just raw CSV data.
+Do not give headings and content in same line.
+Output both questions and answers not just questions. Dont output anything else.
 """
 
 
@@ -110,6 +113,8 @@ You use bulleted lists for output, not numbered lists.
 Do not repeat ideas, quotes, facts, or resources.
 
 Do not start items with the same opening words.
+
+Do not give headings and content in same line.
 
 Ensure you follow ALL these instructions when creating your output.
 """

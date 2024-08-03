@@ -4,7 +4,7 @@ from markdown import markdown
 from dotenv import load_dotenv
 from langchain_community.document_loaders import YoutubeLoader
 from prompts import summarize, extract_wisdom, flashcards
-from summarize import get_gpt_response
+from summarize import get_gpt_response, get_claude_response, get_llama_response
 load_dotenv()
 
 
@@ -26,7 +26,7 @@ st.info("""This app can help you with:
 
 with st.sidebar:
     st.header('Configuration :hammer_and_wrench:')
-    llm_engine = st.selectbox(":robot_face: Choose your LLM engine", ['OpenAI', 'Anthropic'])
+    llm_engine = st.selectbox(":robot_face: Choose your LLM engine", ['OpenAI', 'Anthropic', 'Llama-3.1 405B (Groq)'])
     if llm_engine == 'OpenAI' and not os.environ.get('OPENAI_API_KEY', None):
         openai_api = st.text_input(':key: Paste OpenAI API Key')
         os.environ['OPENAI_API_KEY'] = openai_api
@@ -48,6 +48,12 @@ task_dict = {
     "Custom Prompt": prompt
 }
 
+model_dict = {
+    "OpenAI": get_gpt_response,
+    "Anthropic": get_claude_response,
+    "Llama-3.1 405B (Groq)": get_llama_response
+}
+
 URL = st.text_input(":link: Enter YouTube URL")
 
 def submit():
@@ -60,10 +66,13 @@ def submit():
     elif llm_engine == 'Anthropic' and not os.environ.get('ANTHROPIC_API_KEY', None):
         st.warning(f"Please ensure {llm_engine} API key is set up!")
         st.session_state.submitted = False
+    elif llm_engine == '' and not os.environ.get('GROQ_API_KEY', None):
+        st.warning(f"Please ensure {llm_engine} API key is set up!")
+        st.session_state.submitted = False
     else:
         loader = YoutubeLoader.from_youtube_url(URL)
         transcript = loader.load()[0].page_content
-        response = get_gpt_response(transcript, task_dict[task])
+        response = model_dict[llm_engine](transcript, task_dict[task])
         st.session_state.response = markdown(response)
         st.session_state.submitted = True
 
