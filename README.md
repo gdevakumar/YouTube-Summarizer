@@ -32,3 +32,13 @@ GROQ_API_KEY=gsk_8K...
 streamlit run app.py
 ```
 
+## Video
+
+<div>
+    <a href="https://www.loom.com/share/830bf02d6d77420c8aa0de431b092261">
+      <p>Video Demo</p>
+    </a>
+    <a href="https://www.loom.com/share/830bf02d6d77420c8aa0de431b092261">
+      <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/830bf02d6d77420c8aa0de431b092261-with-play.gif">
+    </a>
+</div>

@@ -33,7 +33,7 @@ def get_claude_response(context, prompt):
 def get_llama_response(context, prompt):
     client = Groq()
     chat_completion = client.chat.completions.create(
-        model="llama3-8b-8192",
+        model="llama-3.1-405b-reasoning",
         messages=[
                 {"role": "system", "content": f"{prompt}"},
                 {"role": "user", "content": f"{context}"}
