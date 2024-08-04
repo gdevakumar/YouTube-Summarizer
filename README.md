@@ -55,5 +55,4 @@ streamlit run app.py
     <a href="https://www.loom.com/share/8c1151c953184406894b95bd52598bcc?sid=c6d3fb8d-dda9-4186-9b1c-7033fdfbc079">
       <p>Video URL</p>
     </a>
-    <div style="position: relative; padding-bottom: 62.5%; height: 0;"><iframe src="https://www.loom.com/embed/8c1151c953184406894b95bd52598bcc?sid=9bb4c9da-4008-4df5-be6f-aab022c34fe4" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 </div>
