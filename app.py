@@ -4,7 +4,7 @@ from markdown import markdown
 from dotenv import load_dotenv
 from langchain_community.document_loaders import YoutubeLoader
 from prompts import summarize, extract_wisdom, flashcards
-from summarize import get_gpt_response, get_claude_response, get_llama_response
+from summarize import get_gpt_response, get_claude_response, get_mixtral_response
 load_dotenv()
 
 
@@ -26,13 +26,16 @@ st.info("""This app can help you with:
 
 with st.sidebar:
     st.header('Configuration :hammer_and_wrench:')
-    llm_engine = st.selectbox(":robot_face: Choose your LLM engine", ['OpenAI', 'Anthropic', 'Llama-3.1 405B (Groq)'])
+    llm_engine = st.selectbox(":robot_face: Choose your LLM engine", ['OpenAI', 'Anthropic', 'Mixtral 8x7b (Groq)'])
     if llm_engine == 'OpenAI' and not os.environ.get('OPENAI_API_KEY', None):
         openai_api = st.text_input(':key: Paste OpenAI API Key')
         os.environ['OPENAI_API_KEY'] = openai_api
     if llm_engine == 'Anthropic' and not os.environ.get('ANTHROPIC_API_KEY', None):
         anthropic_api = st.text_input(':key: Paste Anthropic API Key')
         os.environ['ANTHROPIC_API_KEY'] = anthropic_api
+    if llm_engine == 'Mixtral 8x7b (Groq)' and not os.environ.get('GROQ_API_KEY', None):
+        groq_api = st.text_input(':key: Paste Groq API Key')
+        os.environ['GROQ_API_KEY'] = groq_api
 
 task = st.selectbox(":clipboard: Choose the Task", ['Summarize', 'Extract Wisdom', 'Generate Flashcards', 'Custom Prompt'])
 
@@ -51,7 +54,7 @@ task_dict = {
 model_dict = {
     "OpenAI": get_gpt_response,
     "Anthropic": get_claude_response,
-    "Llama-3.1 405B (Groq)": get_llama_response
+    "Mixtral 8x7b (Groq)": get_mixtral_response
 }
 
 URL = st.text_input(":link: Enter YouTube URL")
@@ -66,7 +69,7 @@ def submit():
     elif llm_engine == 'Anthropic' and not os.environ.get('ANTHROPIC_API_KEY', None):
         st.warning(f"Please ensure {llm_engine} API key is set up!")
         st.session_state.submitted = False
-    elif llm_engine == '' and not os.environ.get('GROQ_API_KEY', None):
+    elif llm_engine == 'Mixtral 8x7b (Groq)' and not os.environ.get('GROQ_API_KEY', None):
         st.warning(f"Please ensure {llm_engine} API key is set up!")
         st.session_state.submitted = False
     else:
